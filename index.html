@@ -1,1 +1,222 @@
-# Constance-Claire
+<!doctype html>
+<html lang="fr" data-match="similar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Match par intérêts — Noir & Blanc</title>
+  <!-- ton fichier css -->
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Plateforme de rencontre par films, livres, musique et affinités de personnalité.">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <span class="brand__dot"></span>
+        <span>interMatch</span>
+      </div>
+      <div class="list--inline">
+        <button class="btn btn--ghost" id="btnSimilar">Qui se ressemble</button>
+        <button class="btn" id="btnOpposites">Les opposés</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container grid grid--2">
+      <div>
+        <h1>Rencontres par goûts & personnalité.</h1>
+        <p class="lead">
+          Connecte-toi à Spotify, Babelio, Letterboxd, réponds à 7 questions,
+          et on te met en face de quelqu’un qui te ressemble… ou qui te complète.
+        </p>
+        <div class="list--inline" style="margin-top:1.4rem">
+          <a href="#quiz" class="btn">Passer le test</a>
+          <a href="#profils" class="btn--ghost btn">Voir les profils</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Sources connectées</h3>
+        <p class="muted">Toutes les données restent privées.</p>
+        <div class="chips">
+          <span class="chip">Spotify (playlists)</span>
+          <span class="chip">Babelio (lectures)</span>
+          <span class="chip">Letterboxd (films)</span>
+          <span class="chip">Personality test</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILS -->
+  <section class="section" id="profils" style="padding:3rem 0">
+    <div class="container stack-3">
+      <div>
+        <h2>Profils compatibles</h2>
+        <p class="lead">Basés sur vos écoutes, vos lectures et vos films favoris.</p>
+      </div>
+      <div class="grid grid--3">
+        <!-- Carte 1 -->
+        <article class="card">
+          <div class="card__header">
+            <div style="display:flex; gap:1rem; align-items:center">
+              <div class="avatar"></div>
+              <div>
+                <h3>Alicia, 25</h3>
+                <p class="muted" style="margin:0">Paris • Musique & cinéma</p>
+              </div>
+            </div>
+            <div class="badge">
+              <span class="badge__dot"></span> 88%
+            </div>
+          </div>
+          <p>Fan de RnB alternatif, lit du Sally Rooney, regarde A24 sur Letterboxd.</p>
+          <div class="badges">
+            <span class="badge badge--spotify"><span class="badge__dot"></span>Spotify</span>
+            <span class="badge badge--letterboxd"><span class="badge__dot"></span>Letterboxd</span>
+          </div>
+          <div class="kpi">
+            <span class="label">Compatibilité</span>
+            <div class="kpi__bar"><div class="kpi__fill" style="--p:88%"></div></div>
+          </div>
+          <button class="btn">Ouvrir le profil</button>
+        </article>
+
+        <!-- Carte 2 -->
+        <article class="card">
+          <div class="card__header">
+            <div style="display:flex; gap:1rem; align-items:center">
+              <div class="avatar"></div>
+              <div>
+                <h3>Mehdi, 29</h3>
+                <p class="muted" style="margin:0">Lyon • Livres & podcasts</p>
+              </div>
+            </div>
+            <div class="badge">
+              <span class="badge__dot"></span> 74%
+            </div>
+          </div>
+          <p>Très actif sur Babelio, aime les polars nordiques et les BO de films.</p>
+          <div class="badges">
+            <span class="badge badge--babelio"><span class="badge__dot"></span>Babelio</span>
+            <span class="badge badge--spotify"><span class="badge__dot"></span>Spotify</span>
+          </div>
+          <div class="kpi">
+            <span class="label">Compatibilité</span>
+            <div class="kpi__bar"><div class="kpi__fill" style="--p:74%"></div></div>
+          </div>
+          <button class="btn btn--subtle">Mettre en favori</button>
+        </article>
+
+        <!-- Carte 3 -->
+        <article class="card">
+          <div class="card__header">
+            <div style="display:flex; gap:1rem; align-items:center">
+              <div class="avatar"></div>
+              <div>
+                <h3>Zoé, 27</h3>
+                <p class="muted" style="margin:0">Marseille • Art & séries</p>
+              </div>
+            </div>
+            <div class="badge">
+              <span class="badge__dot"></span> 61%
+            </div>
+          </div>
+          <p>Mix cinéma d’auteur + pop mainstream. Aime débattre, cherche un opposé.</p>
+          <div class="badges">
+            <span class="badge badge--letterboxd"><span class="badge__dot"></span>Letterboxd</span>
+          </div>
+          <div class="kpi">
+            <span class="label">Compatibilité</span>
+            <div class="kpi__bar"><div class="kpi__fill" style="--p:61%"></div></div>
+          </div>
+          <button class="btn">Envoyer un message</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEST DE PERSONNALITÉ -->
+  <section class="section" id="quiz" style="padding:3rem 0; border-top:1px solid var(--outline);">
+    <div class="container grid grid--2">
+      <div>
+        <h2>Test de personnalité rapide</h2>
+        <p class="lead">7 questions pour savoir si on te montre les “similaires” ou les “opposés”.</p>
+        <p class="muted">Tu pourras toujours changer ensuite grâce au bouton en haut.</p>
+      </div>
+      <form class="quiz" onsubmit="event.preventDefault();">
+        <div class="progress">
+          <div class="progress__fill" id="quizProgress" style="--p: 30%;"></div>
+        </div>
+        <div class="quiz__question">Quand tu découvres un nouveau morceau sur Spotify, tu veux…</div>
+        <div class="quiz__options">
+          <label class="option">
+            <input type="radio" name="q1" value="similar" checked />
+            <span>…des recommandations dans le même style.</span>
+          </label>
+          <label class="option">
+            <input type="radio" name="q1" value="opposites" />
+            <span>…quelque chose qui casse complètement l’ambiance.</span>
+          </label>
+        </div>
+
+        <div class="quiz__question">En couple, tu préfères :</div>
+        <div class="quiz__options">
+          <label class="option">
+            <input type="radio" name="q2" value="similar" />
+            <span>Avoir les mêmes références culturelles (films, livres).</span>
+          </label>
+          <label class="option">
+            <input type="radio" name="q2" value="opposites" />
+            <span>Être challengé par quelqu’un de très différent.</span>
+          </label>
+        </div>
+
+        <button class="btn" id="quizSubmit">Calculer mon mood</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> interMatch — rencontre par intérêts. Données Spotify, Babelio, Letterboxd utilisées avec le consentement des utilisateurs.</p>
+    </div>
+  </footer>
+
+  <!-- JS minimal -->
+  <script>
+    // année
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const root = document.documentElement;
+    const btnSimilar = document.getElementById('btnSimilar');
+    const btnOpposites = document.getElementById('btnOpposites');
+    const quizSubmit = document.getElementById('quizSubmit');
+
+    btnSimilar?.addEventListener('click', () => {
+      root.setAttribute('data-match', 'similar');
+    });
+    btnOpposites?.addEventListener('click', () => {
+      root.setAttribute('data-match', 'opposites');
+    });
+
+    // petit calcul ultra simple du test
+    quizSubmit?.addEventListener('click', () => {
+      const answers = [...document.querySelectorAll('input[type="radio"]:checked')];
+      const opposites = answers.filter(a => a.value === 'opposites').length;
+      const similars = answers.filter(a => a.value === 'similar').length;
+      if (opposites > similars) {
+        root.setAttribute('data-match', 'opposites');
+      } else {
+        root.setAttribute('data-match', 'similar');
+      }
+      // petit feedback de progression
+      const progress = document.getElementById('quizProgress');
+      if (progress) progress.style.setProperty('--p', '100%');
+    });
+  </script>
+</body>
+</html>
