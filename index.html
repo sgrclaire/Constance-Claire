@@ -2,32 +2,27 @@
 <html lang="fr" data-match="similar">
 <head>
   <meta charset="UTF-8">
-  <title>interMatch — Web documentaire sur la rencontre par intérêts</title>
+  <title>interMatch — Rencontre par intérêts (webdoc)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Web documentaire réalisé dans le cadre du cours Document numérique — rencontre par affinités culturelles via Spotify, Babelio, Letterboxd et test de personnalité.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ENTÊTE + SOMMAIRE -->
+
+  <!-- 1. ENTÊTE + SOMMAIRE -->
   <header class="header">
     <div class="container nav">
       <div class="brand">
         <span class="brand__dot"></span>
-        <span>interMatch — webdoc</span>
+        <span>interMatch</span>
       </div>
-      <!-- Sommaire / index de navigation -->
-      <nav aria-label="Sommaire du web documentaire">
+      <nav aria-label="Sommaire">
         <div class="list--inline">
-          <a href="#introduction">Introduction</a>
-          <a href="#contexte">Contexte & enjeux</a>
-          <a href="#fonctionnement">Fonctionnement</a>
-          <a href="#apis">APIs culturelles</a>
-          <a href="#ethique">Données & éthique</a>
+          <a href="#intro">Intro</a>
+          <a href="#projet">Le projet</a>
           <a href="#glossaire">Glossaire</a>
           <a href="#biblio">Bibliographie</a>
         </div>
       </nav>
-      <!-- boutons de mode (similar/opposites) -->
       <div class="list--inline">
         <button class="btn btn--ghost" id="btnSimilar">Ressemblance</button>
         <button class="btn" id="btnOpposites">Opposés</button>
@@ -35,211 +30,98 @@
     </div>
   </header>
 
-  <main>
-    <!-- HERO rapide pour situer le projet -->
-    <section class="hero" id="introduction">
-      <div class="container grid grid--2">
-        <div>
-          <h1>« interMatch » : documenter la rencontre par affinités culturelles</h1>
-          <p class="lead">
-            Ce web documentaire présente un prototype de site de rencontre qui ne part pas seulement de la géolocalisation ou de la photo, mais de ce que les individus écoutent, lisent et regardent. Il est réalisé dans le cadre du cours « Document numérique » (Master CTM).
-          </p>
-          <p>
-            Date de réalisation : <time datetime="2025-12-05">5 décembre 2025</time> — Groupe : à compléter.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Structure du document</h3>
-          <p class="muted">L’article est découpé en parties selon les consignes :</p>
-          <ul class="list">
-            <li>Contexte et objectifs</li>
-            <li>Description du dispositif</li>
-            <li>Sources de données (Spotify, Babelio, Letterboxd)</li>
-            <li>Test de personnalité « qui se ressemble / les opposés »</li>
-            <li>Aspects juridiques et licences</li>
-            <li>Glossaire</li>
-            <li>Sitographie & bibliographie interactive</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  <main class="container" style="padding:2.5rem 0 3rem;">
 
-    <!-- ARTICLE PRINCIPAL -->
-    <article class="container stack-3" style="padding:3rem 0;">
-      <!-- PARTIE 1 : CONTEXTE -->
-      <section id="contexte">
-        <h2>1. Contexte et enjeux</h2>
-        <p>
-          Les plateformes de rencontre contemporaines reposent majoritairement sur un tri visuel et géographique. Or, une partie des utilisateurs expriment le besoin d’interactions plus qualitatives, fondées sur des affinités culturelles et cognitives. L’idée d’« interMatch » est de montrer qu’un rapprochement basé sur les goûts déclarés dans d’autres plateformes — musique, livres, films — peut constituer un meilleur point de départ pour la conversation.
-        </p>
-        <p>
-          Dans ce projet, nous faisons l’hypothèse que la médiation par les données culturelles issues d’API publiques ou documentées permet une rencontre plus « située » : on ne rencontre pas n’importe qui, on rencontre quelqu’un qui a écouté le même album, lu le même roman ou noté le même film sur Letterboxd.
-        </p>
-        <p>
-          Ce web documentaire décrit le dispositif, ses limites et la manière dont il est implémenté en HTML5 selon les consignes de l’enseignant.
+    <!-- 2. ARTICLE COURT -->
+    <article>
+
+      <!-- intro -->
+      <section id="intro" class="stack-2" style="margin-bottom:2.5rem;">
+        <h1>« interMatch » : rencontres par goûts culturels</h1>
+        <p class="lead">
+          Web documentaire réalisé dans le cadre du cours « Document numérique ». Objectif : montrer qu’on peut faire du matching
+          à partir de Spotify, Babelio, Letterboxd et d’un petit test de personnalité (mode clair = ressemblant, mode sombre = opposé).
         </p>
       </section>
 
-      <!-- PARTIE 2 : FONCTIONNEMENT DU SITE -->
-      <section id="fonctionnement">
-        <h2>2. Fonctionnement général du prototype</h2>
+      <!-- partie 1 -->
+      <section id="projet" class="stack-2" style="margin-bottom:2.5rem;">
+        <h2>1. Présentation rapide du projet</h2>
         <p>
-          Le site est organisé en deux modes de mise en relation : le mode « qui se ressemble s’assemble » et le mode « les opposés s’attirent ». Le premier mettra en avant les profils partageant un grand nombre de références culturelles ; le second mettra en avant les profils complémentaires (par exemple quelqu’un qui lit beaucoup mais écoute peu de musique sera présenté à quelqu’un qui écoute beaucoup mais lit peu).
+          L’idée est de proposer un site de rencontre qui ne se base pas uniquement sur la photo, mais sur les activités culturelles
+          réelles des utilisateurs. On part de leurs playlists Spotify, de leurs lectures Babelio et de leurs films vus sur Letterboxd,
+          puis on ajoute une couche de personnalité pour décider d’afficher plutôt des profils « ressemblants » ou au contraire « complémentaires ».
         </p>
         <p>
-          Techniquement, le mode sélectionné est reflété dans l’attribut de l’élément racine : <code>&lt;html data-match="similar"&gt;</code> ou <code>&lt;html data-match="opposites"&gt;</code>. Cette information est ensuite stylée via la feuille de style afin de faire apparaître un thème clair ou sombre selon le mode choisi.
+          Le document que tu es en train de lire est la version HTML5 demandée par l’enseignant : il contient un sommaire, des sections distinctes,
+          un glossaire, et une bibliographie interactive.
         </p>
 
-        <!-- Figure légendée -->
-        <figure style="margin:1.5rem 0;">
-          <img src="assets/schema-matching.png" alt="Schéma simplifié du matching culturel" style="max-width:100%; border:1px solid var(--outline); border-radius:10px;">
-          <figcaption>
-            Figure 1 — Schéma simplifié du matching culturel : données issues de Spotify, Babelio et Letterboxd, enrichies par un test de personnalité. Source : réalisation du groupe.
-          </figcaption>
+        <!-- visuel obligatoire minimal -->
+        <figure class="card">
+          <img src="assets/matching.png" alt="Schéma du matching par intérêts" style="max-width:100%;border-radius:8px;">
+          <figcaption>Figure 1 — Schéma très simplifié du fonctionnement d’interMatch.</figcaption>
         </figure>
 
-        <!-- Média (vidéo ou audio) -->
-        <p>
-          Présentation rapide du prototype (vidéo intégrée) :
-        </p>
-        <video controls width="100%" style="max-width:560px; border:1px solid var(--outline); border-radius:10px;">
-          <source src="assets/demo-intermatch.mp4" type="video/mp4">
-          Votre navigateur ne supporte pas la vidéo HTML5.
+        <!-- vidéo minimale à remplacer -->
+        <p>Vidéo de démonstration (à remplacer par votre vrai fichier) :</p>
+        <video controls width="100%" style="max-width:480px;">
+          <source src="assets/demo.mp4" type="video/mp4">
+          Votre navigateur ne lit pas la vidéo.
         </video>
       </section>
 
-      <!-- PARTIE 3 : APIS CULTURELLES -->
-      <section id="apis">
-        <h2>3. Intégration des API culturelles</h2>
-        <p>
-          Le dispositif s’appuie sur trois sources de données externes fréquemment utilisées par les publics culturels :
-        </p>
-        <ul>
-          <li><strong>Spotify</strong> : récupération des playlists et des artistes les plus écoutés afin de déduire des « pôles d’intérêt musicaux ».</li>
-          <li><strong>Babelio</strong> : consultation des bibliothèques de livres lus ou en cours ; ces données permettent de repérer les genres de prédilection.</li>
-          <li><strong>Letterboxd</strong> : liste de films vus et notés, très utile pour rapprocher les cinéphiles.</li>
-        </ul>
-        <p>
-          Ces trois API sont utilisées ici de manière illustrative. Dans un contexte réel, il conviendrait de se conformer aux conditions d’utilisation et de ne stocker que les données nécessaires au matching.
-        </p>
-      </section>
-
-      <!-- PARTIE 4 : TEST DE PERSONNALITÉ -->
-      <section id="test">
-        <h2>4. Test de personnalité : « similarité » ou « opposition »</h2>
-        <p>
-          Pour répondre à la consigne de proposer une interaction avec le texte, nous intégrons un petit test de personnalité qui oriente le mode d’affichage. Le principe est le suivant : si l’utilisateur donne une majorité de réponses orientées vers la familiarité, le site bascule en « ressemblance » (thème clair) ; s’il exprime le besoin d’être challengé, le site bascule en « opposés » (thème sombre).
-        </p>
-        <p>
-          Cette partie démontre aussi la possibilité d’utiliser du JavaScript léger pour modifier l’état du document sans sortir du cadre HTML5.
-        </p>
-        <!-- on réutilise le petit quiz -->
-        <form class="quiz" onsubmit="event.preventDefault();">
-          <div class="progress">
-            <div class="progress__fill" id="quizProgress" style="--p: 40%;"></div>
-          </div>
-          <div class="quiz__question">« Quand je discute avec quelqu’un, je préfère partir de références communes. »</div>
-          <div class="quiz__options">
-            <label class="option">
-              <input type="radio" name="q1" value="similar" checked>
-              <span>Oui, cela crée de la confiance.</span>
-            </label>
-            <label class="option">
-              <input type="radio" name="q1" value="opposites">
-              <span>Non, j’aime découvrir des univers nouveaux.</span>
-            </label>
-          </div>
-          <button class="btn" id="quizSubmit">Valider mon mode</button>
-        </form>
-      </section>
-
-      <!-- PARTIE 5 : DONNÉES & ÉTHIQUE -->
-      <section id="ethique">
-        <h2>5. Données personnelles, droit d’auteur et ré-exploitation</h2>
-        <p>
-          Le recours à des données issues de plateformes culturelles pose la question du consentement et de la finalité. Dans le cadre de ce projet pédagogique, les données sont simulées. Dans un contexte de mise en production, il faudrait informer clairement l’utilisateur de la finalité (« proposition de rencontres »), de la durée de conservation et des droits d’accès.
-        </p>
-        <p>
-          De même, l’intégration d’images, de logos ou de contenus protégés doit se faire dans le respect du droit d’auteur. Pour ce web documentaire, nous recommandons l’utilisation de ressources libres de droit ou publiées sous licence Creative Commons.
-        </p>
-      </section>
-
-      <!-- GLOSSAIRE -->
-      <section id="glossaire">
-        <h2>6. Glossaire</h2>
-        <p>Ce glossaire permet aux lecteurs de retrouver rapidement certains termes utilisés dans le document.</p>
-        <dl>
-          <dt id="glossaire-api"><strong>API</strong></dt>
-          <dd>Interface de Programmation Applicative. Permet ici d’interroger un service comme Spotify ou Babelio pour récupérer des données culturelles.</dd>
-
-          <dt id="glossaire-matching"><strong>Matching</strong></dt>
-          <dd>Procédure de rapprochement entre deux profils, selon des critères définis (ici : goûts culturels et paramètres de personnalité).</dd>
-
-          <dt id="glossaire-webdoc"><strong>Web documentaire</strong></dt>
-          <dd>Forme éditoriale interactive publiée sur le web, mêlant texte, médias et navigation interne.</dd>
-        </dl>
-      </section>
-
-      <!-- SITOGRAPHIE / BIBLIO -->
-      <section id="biblio">
-        <h2>7. Sitographie et bibliographie interactive</h2>
-        <p>Les références suivantes sont données dans un format exploitable par un logiciel de gestion bibliographique (Zotero, etc.).</p>
-        <ul>
-          <li>
-            <cite>O’Reilly, T. (2010). « What is Web 2.0 ». Consulté en ligne.</cite>
-          </li>
-          <li>
-            <cite>Boyd, D. (2014). « It’s Complicated: The Social Lives of Networked Teens ». Yale University Press.</cite>
-          </li>
-          <li>
-            <cite>Spotify for Developers. Documentation de l’API. Disponible en ligne.</cite>
-          </li>
-          <li>
-            <cite>Babelio. « API et flux ». Disponible en ligne.</cite>
-          </li>
-          <li>
-            <cite>Letterboxd API (documentation non officielle). Consultée en novembre 2025.</cite>
-          </li>
-        </ul>
-        <p>
-          Pour exporter vers Zotero, il est possible d’utiliser le navigateur et de capturer les métadonnées de cette page, ou d’ajouter un fichier BibTeX en annexe du projet.
-        </p>
-      </section>
     </article>
+
+    <!-- 3. GLOSSAIRE -->
+    <section id="glossaire" style="margin-bottom:2.5rem;">
+      <h2>2. Glossaire</h2>
+      <dl>
+        <dt><strong>API</strong></dt>
+        <dd>Interface permettant de récupérer les données d’une autre application (ici Spotify, Babelio, Letterboxd).</dd>
+
+        <dt><strong>Matching</strong></dt>
+        <dd>Action de rapprocher deux profils selon des critères (goûts, personnalité).</dd>
+
+        <dt><strong>Web documentaire</strong></dt>
+        <dd>Page web structurée mêlant texte, médias et navigation interne.</dd>
+      </dl>
+    </section>
+
+    <!-- 4. BIBLIO / SITO -->
+    <section id="biblio" style="margin-bottom:2.5rem;">
+      <h2>3. Sitographie & bibliographie</h2>
+      <ul>
+        <li><cite>Spotify for Developers. Documentation de l’API. Consulté en 2025.</cite></li>
+        <li><cite>Babelio. « Aide & flux de données ». Consulté en 2025.</cite></li>
+        <li><cite>Boyd, D. (2014). « It’s Complicated ». Yale University Press.</cite></li>
+      </ul>
+      <p class="muted">Ces références sont données au format texte simple pour être récupérées dans Zotero.</p>
+    </section>
+
   </main>
 
-  <!-- PIED DE PAGE AVEC MENTIONS LÉGALES -->
+  <!-- FOOTER avec mentions + mailto -->
   <footer class="footer">
     <div class="container stack-2">
-      <p><strong>Mentions légales :</strong> site réalisé dans le cadre du cours « Document numérique » du Master CTM (Université / CNAM). Auteurs : à compléter.</p>
-      <p><strong>Licence de ré-exploitation :</strong> contenu textuel sous licence Creative Commons BY-NC 4.0, sauf mention contraire.</p>
+      <p><strong>Mentions légales :</strong> site pédagogique réalisé pour le cours « Document numérique » (Master CTM).</p>
+      <p><strong>Licence :</strong> CC BY-NC 4.0 (réutilisation non commerciale avec attribution).</p>
       <p>
-        <a href="mailto:prenom.nom@etu.univ.fr?subject=Contact%20projet%20Document%20num%C3%A9rique&body=Bonjour,%20je%20souhaite%20vous%20contacter%20%C3%A0%20propos%20du%20webdoc.">Nous écrire</a>
+        <a href="mailto:prenom.nom@etu.univ.fr?subject=Contact%20projet%20interMatch&body=Bonjour,%20je%20vous%20contacte%20au%20sujet%20du%20webdoc.">
+          Nous écrire
+        </a>
       </p>
-      <p class="muted">Validation HTML5 à effectuer via le validateur du W3C.</p>
     </div>
   </footer>
 
-  <!-- JS léger pour basculer le mode -->
+  <!-- JS pour le mode clair/sombre -->
   <script>
     const root = document.documentElement;
-    const btnSimilar = document.getElementById('btnSimilar');
-    const btnOpposites = document.getElementById('btnOpposites');
-    const quizSubmit = document.getElementById('quizSubmit');
-
-    btnSimilar?.addEventListener('click', () => {
+    document.getElementById('btnSimilar').addEventListener('click', () => {
       root.setAttribute('data-match', 'similar');
     });
-    btnOpposites?.addEventListener('click', () => {
+    document.getElementById('btnOpposites').addEventListener('click', () => {
       root.setAttribute('data-match', 'opposites');
-    });
-    quizSubmit?.addEventListener('click', () => {
-      const answers = [...document.querySelectorAll('input[type="radio"]:checked')];
-      const opposites = answers.filter(a => a.value === 'opposites').length;
-      const similars = answers.filter(a => a.value === 'similar').length;
-      root.setAttribute('data-match', (opposites > similars) ? 'opposites' : 'similar');
-      const progress = document.getElementById('quizProgress');
-      if (progress) progress.style.setProperty('--p', '100%');
     });
   </script>
 </body>
