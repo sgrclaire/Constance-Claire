@@ -1,0 +1,382 @@
+/* =========================================
+   MATCH — Design System (Noir & Blanc)
+   Thèmes : clair (similar) / sombre (opposites)
+   Typo : serif chic (titres) + sans contemporaine (texte)
+   ========================================= */
+
+/* ---------- Reset doux + base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--fg);
+  accent-color: var(--accent);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Variables par défaut ---------- */
+:root {
+  /* Typographies (charge plus tard des webfonts si tu veux) */
+  --font-serif: "Georgia", "Times New Roman", ui-serif, serif;          /* titres */
+  --font-sans: "Inter", "SF Pro Text", system-ui, -apple-system, Arial, sans-serif;
+
+  /* Palette N&B (uniquement niveaux de gris) */
+  --white: #ffffff;
+  --black: #000000;
+  --g-10: #f7f7f7;
+  --g-20: #eeeeee;
+  --g-30: #e4e4e4;
+  --g-40: #cfcfcf;
+  --g-50: #b3b3b3;
+  --g-60: #8f8f8f;
+  --g-70: #6b6b6b;
+  --g-80: #4a4a4a;
+  --g-90: #2a2a2a;
+
+  /* Thème (sera surchargé par data-match) */
+  --bg: var(--white);
+  --fg: var(--black);
+  --muted: var(--g-70);
+  --elev: var(--g-10);
+  --outline: var(--g-30);
+  --outline-strong: var(--g-60);
+  --card: var(--white);
+  --accent: var(--black);           /* Boutons, liens */
+  --accent-contrast: var(--white);  /* Texte sur boutons accent */
+
+  /* Rythme & UI */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --gap-1: .5rem;
+  --gap-2: .75rem;
+  --gap-3: 1rem;
+  --gap-4: 1.25rem;
+  --gap-5: 1.75rem;
+  --shadow-1: 0 1px 0 rgba(0,0,0,.06), 0 1px 12px rgba(0,0,0,.05);
+  --shadow-2: 0 2px 24px rgba(0,0,0,.08);
+
+  /* Taille container */
+  --container: 1120px;
+
+  /* Transition */
+  --t: 180ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* ---------- Thème clair / sombre selon data-match ---------- */
+:root[data-match="similar"] {
+  --bg: var(--white);
+  --fg: var(--black);
+  --muted: var(--g-70);
+  --elev: var(--g-10);
+  --outline: var(--g-30);
+  --outline-strong: var(--g-60);
+  --card: var(--white);
+  --accent: var(--black);
+  --accent-contrast: var(--white);
+}
+
+:root[data-match="opposites"] {
+  --bg: var(--black);
+  --fg: var(--white);
+  --muted: var(--g-50);
+  --elev: var(--g-90);
+  --outline: var(--g-80);
+  --outline-strong: var(--g-60);
+  --card: #0d0d0d;
+  --accent: var(--white);
+  --accent-contrast: var(--black);
+}
+
+/* Option : si l’utilisateur change le système, tu peux t’aligner par défaut */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-match]) { /* si pas de choix explicite */
+    --bg: var(--black);
+    --fg: var(--white);
+    --muted: var(--g-50);
+    --elev: var(--g-90);
+    --outline: var(--g-80);
+    --outline-strong: var(--g-60);
+    --card: #0d0d0d;
+    --accent: var(--white);
+    --accent-contrast: var(--black);
+  }
+}
+
+/* ---------- Grille & conteneurs ---------- */
+.container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+}
+.grid {
+  display: grid;
+  gap: var(--gap-4);
+}
+.grid--2 { grid-template-columns: 1fr 1fr; }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) {
+  .grid--2, .grid--3 { grid-template-columns: 1fr; }
+}
+
+/* ---------- Typo ---------- */
+h1, h2, h3, .display {
+  font-family: var(--font-serif);
+  letter-spacing: .2px;
+  line-height: 1.2;
+  margin: 0 0 .6em;
+}
+h1 { font-size: clamp(2rem, 3vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 2.2vw, 2.2rem); }
+h3 { font-size: clamp(1.15rem, 1.4vw, 1.35rem); }
+p { margin: 0 0 1em; color: var(--fg); }
+.lead { font-size: 1.1rem; color: var(--muted); max-width: 60ch; }
+
+/* Liens minimalistes */
+a {
+  color: var(--fg);
+  text-decoration: none;
+  background:
+    linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  padding-bottom: 1px;
+  transition: opacity var(--t), background-size var(--t);
+}
+a:hover { opacity: .75; background-size: 0 1px; }
+
+/* ---------- Header / Nav ---------- */
+.header {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: blur(8px);
+  background: color-mix(in oklab, var(--bg) 80%, transparent);
+  border-bottom: 1px solid var(--outline);
+}
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--gap-3);
+  padding: .9rem 0;
+}
+.brand {
+  display: flex; align-items: center; gap: .6rem;
+  font-family: var(--font-serif);
+  font-weight: 700; letter-spacing: .3px;
+}
+.brand__dot {
+  width: .7rem; aspect-ratio: 1;
+  background: var(--fg); border-radius: 50%;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  --btn-bg: var(--accent);
+  --btn-fg: var(--accent-contrast);
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .55rem;
+  padding: .7rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 600;
+  transition: transform var(--t), opacity var(--t), background var(--t), color var(--t);
+  cursor: pointer; user-select: none;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--fg);
+  border-color: var(--outline);
+}
+.btn--subtle {
+  --btn-bg: var(--elev);
+  --btn-fg: var(--fg);
+  border-color: var(--outline);
+}
+
+/* ---------- Champs & formulaires ---------- */
+.field {
+  display: grid; gap: .4rem;
+}
+.label {
+  font-size: .9rem; color: var(--muted);
+}
+.input, .select, .textarea {
+  width: 100%;
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-sm);
+  padding: .75rem .9rem;
+  transition: border-color var(--t), box-shadow var(--t), background var(--t);
+}
+.input::placeholder { color: color-mix(in oklab, var(--muted) 80%, transparent); }
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--outline-strong);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+}
+
+/* Toggle "Similar vs Opposites" */
+.switch {
+  display: inline-flex; align-items: center; gap: .6rem; cursor: pointer;
+  user-select: none;
+}
+.switch__track {
+  width: 52px; height: 28px; border-radius: 999px;
+  background: var(--elev); border: 1px solid var(--outline); position: relative;
+  transition: background var(--t), border-color var(--t);
+}
+.switch__thumb {
+  position: absolute; top: 50%; left: 3px; translate: 0 -50%;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--fg); transition: left var(--t), background var(--t);
+}
+.switch[data-state="on"] .switch__thumb { left: 27px; }
+
+/* ---------- Cartes profils ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: var(--gap-4);
+  display: grid; gap: var(--gap-3);
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--outline-strong);
+}
+.card__header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--gap-3);
+}
+.avatar {
+  width: 64px; aspect-ratio: 1; border-radius: 50%;
+  background: var(--elev); border: 1px solid var(--outline);
+}
+.badges {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .35rem .6rem; border-radius: 999px;
+  background: var(--elev); border: 1px solid var(--outline);
+  font-size: .85rem; color: var(--fg);
+}
+.badge__dot { width: .5rem; aspect-ratio: 1; border-radius: 50%; background: var(--fg); }
+
+/* Services tiers (monochrome) */
+.badge--spotify .badge__dot { background: var(--fg); }
+.badge--babelio .badge__dot { background: var(--fg); }
+.badge--letterboxd .badge__dot { background: var(--fg); }
+
+/* ---------- Métrique de compatibilité ---------- */
+.kpi {
+  display: grid; gap: .4rem;
+}
+.kpi__bar {
+  height: 8px; border-radius: 999px; background: var(--elev); overflow: clip;
+  border: 1px solid var(--outline);
+}
+.kpi__fill {
+  height: 100%; width: var(--p, 50%);
+  background: var(--fg);
+  transition: width 280ms ease;
+}
+
+/* ---------- Sections héro / listes ---------- */
+.hero {
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  border-bottom: 1px solid var(--outline);
+}
+.hero__lead { max-width: 70ch; }
+
+.list {
+  display: grid; gap: .75rem;
+}
+.list--inline { display: flex; gap: .8rem; flex-wrap: wrap; }
+
+/* ---------- Modale ---------- */
+.modal {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: color-mix(in oklab, var(--bg) 50%, transparent);
+  padding: 1rem; z-index: 50; backdrop-filter: blur(4px);
+}
+.modal__card {
+  background: var(--card); color: var(--fg);
+  border: 1px solid var(--outline); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2); width: min(560px, 100%);
+  padding: var(--gap-4); display: grid; gap: var(--gap-3);
+}
+
+/* ---------- Composants du test de personnalité ---------- */
+.quiz {
+  display: grid; gap: var(--gap-4);
+}
+.quiz__question { font-family: var(--font-serif); font-size: 1.25rem; }
+.quiz__options {
+  display: grid; gap: .6rem;
+}
+.option {
+  display: grid; align-items: start; grid-template-columns: 1.2rem 1fr; gap: .75rem;
+  padding: .7rem .9rem; border: 1px solid var(--outline); border-radius: var(--radius-sm);
+  background: var(--card);
+  transition: border-color var(--t), background var(--t);
+}
+.option:hover { border-color: var(--outline-strong); }
+.progress {
+  height: 6px; background: var(--elev); border: 1px solid var(--outline);
+  border-radius: 999px; overflow: clip;
+}
+.progress__fill {
+  height: 100%; width: var(--p, 0%); background: var(--fg); transition: width 240ms ease;
+}
+
+/* ---------- Tableaux / chips d’intérêts ---------- */
+.chips { display: flex; gap: .5rem; flex-wrap: wrap; }
+.chip {
+  padding: .4rem .65rem; border-radius: 999px;
+  border: 1px dashed var(--outline); color: var(--fg);
+  background: transparent; font-size: .9rem;
+}
+
+/* ---------- États / Accessibilité ---------- */
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--accent) 35%, transparent);
+  outline-offset: 2px; border-radius: 6px;
+}
+[aria-busy="true"] { cursor: progress; }
+
+/* Réduction d’animations si nécessaire */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Contrast boost si demandé par l’utilisateur */
+@media (prefers-contrast: more) {
+  :root {
+    --outline: color-mix(in oklab, var(--fg) 20%, var(--outline));
+    --outline-strong: color-mix(in oklab, var(--fg) 40%, var(--outline-strong));
+  }
+}
+
+/* ---------- Layout utilitaires ---------- */
+.stack-1 > * + * { margin-top: var(--gap-1); }
+.stack-2 > * + * { margin-top: var(--gap-2); }
+.stack-3 > * + * { margin-top: var(--gap-3); }
+.center { display: grid; place-items: center; }
+.hidden { display: none !important; }
+
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid var(--outline);
+  padding: 2rem 0; color: var(--muted); font-size: .95rem;
+}
