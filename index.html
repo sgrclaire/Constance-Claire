@@ -63,6 +63,217 @@
     </section>
   </main>
 
+
+<html lang="fr" data-match="similar">
+<head>
+  <meta charset="utf-8">
+  <title>Affinity — Profils compatibles</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Parcourez des profils basés sur vos goûts Spotify, Babelio et Letterboxd.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo-title brand">
+        <img src="assets/logo-heart-puzzle.svg" alt="" aria-hidden="true">
+        <span>Affinity</span>
+      </div>
+      <nav class="main-nav" aria-label="Navigation">
+        <div class="list--inline">
+          <a href="index.html">Accueil</a>
+          <a href="profils.html" aria-current="page">Profils</a>
+          <a href="quiz.html">Test</a>
+          <a href="webdoc.html">Webdoc</a>
+          <a href="mentions.html">Mentions</a>
+        </div>
+      </nav>
+      <div class="list--inline">
+        <button class="btn btn--ghost" id="btnSimilar">Ressemblance</button>
+        <button class="btn" id="btnOpposites">Opposés</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- bandeau -->
+    <section class="hero">
+      <div class="container stack-2">
+        <h1>Profils compatibles</h1>
+        <p class="lead">Basés sur vos écoutes, vos lectures et vos films favoris. Utilisez les filtres pour affiner.</p>
+
+        <!-- filtres légers (optionnels) -->
+        <div class="grid" style="grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--gap-3);">
+          <div class="field">
+            <label class="label" for="fVille">Ville</label>
+            <select class="select" id="fVille">
+              <option value="">Toutes</option>
+              <option>Paris</option><option>Lyon</option><option>Marseille</option>
+              <option>Lille</option><option>Bordeaux</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="label" for="fSource">Source</label>
+            <select class="select" id="fSource">
+              <option value="">Toutes</option>
+              <option value="spotify">Spotify</option>
+              <option value="babelio">Babelio</option>
+              <option value="letterboxd">Letterboxd</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="label" for="fMode">Mode</label>
+            <select class="select" id="fMode">
+              <option value="">Tous</option>
+              <option value="similar">Ressemblance</option>
+              <option value="opposites">Opposés</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="label" for="fMinCompat">Compatibilité min.</label>
+            <input class="input" id="fMinCompat" type="number" min="0" max="100" step="5" placeholder="ex : 60">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- grille -->
+    <section class="section" style="padding:3rem 0">
+      <div class="container">
+        <div id="grid" class="grid grid--3">
+
+          <!-- Exemple 1 -->
+          <article class="card profile"
+                   data-ville="Paris" data-mode="similar" data-compat="88"
+                   data-sources="spotify,letterboxd">
+            <div class="card__header">
+              <div style="display:flex; gap:1rem; align-items:center">
+                <div class="avatar" style="background:var(--elev)"></div>
+                <div>
+                  <h3>Alicia, 25</h3>
+                  <p class="muted" style="margin:0">Paris • Musique & cinéma</p>
+                </div>
+              </div>
+              <div class="badge"><span class="badge__dot"></span> 88%</div>
+            </div>
+            <p>Fan de RnB alternatif, lit du Sally Rooney, regarde A24 sur Letterboxd.</p>
+            <div class="badges">
+              <span class="badge badge--spotify"><span class="badge__dot"></span>Spotify</span>
+              <span class="badge badge--letterboxd"><span class="badge__dot"></span>Letterboxd</span>
+            </div>
+            <div class="kpi">
+              <span class="label">Compatibilité</span>
+              <div class="kpi__bar"><div class="kpi__fill" style="--p:88%"></div></div>
+            </div>
+            <div class="list--inline">
+              <button class="btn">Ouvrir le profil</button>
+              <button class="btn btn--subtle">Favori</button>
+            </div>
+          </article>
+
+          <!-- Exemple 2 -->
+          <article class="card profile"
+                   data-ville="Lyon" data-mode="similar" data-compat="74"
+                   data-sources="babelio,spotify">
+            <div class="card__header">
+              <div style="display:flex; gap:1rem; align-items:center">
+                <div class="avatar"></div>
+                <div>
+                  <h3>Mehdi, 29</h3>
+                  <p class="muted" style="margin:0">Lyon • Livres & podcasts</p>
+                </div>
+              </div>
+              <div class="badge"><span class="badge__dot"></span> 74%</div>
+            </div>
+            <p>Très actif sur Babelio, aime les polars nordiques et les BO de films.</p>
+            <div class="badges">
+              <span class="badge badge--babelio"><span class="badge__dot"></span>Babelio</span>
+              <span class="badge badge--spotify"><span class="badge__dot"></span>Spotify</span>
+            </div>
+            <div class="kpi">
+              <span class="label">Compatibilité</span>
+              <div class="kpi__bar"><div class="kpi__fill" style="--p:74%"></div></div>
+            </div>
+            <div class="list--inline">
+              <button class="btn btn--subtle">Mettre en favori</button>
+              <button class="btn">Envoyer un message</button>
+            </div>
+          </article>
+
+          <!-- Exemple 3 -->
+          <article class="card profile"
+                   data-ville="Marseille" data-mode="opposites" data-compat="61"
+                   data-sources="letterboxd">
+            <div class="card__header">
+              <div style="display:flex; gap:1rem; align-items:center">
+                <div class="avatar"></div>
+                <div>
+                  <h3>Zoé, 27</h3>
+                  <p class="muted" style="margin:0">Marseille • Art & séries</p>
+                </div>
+              </div>
+              <div class="badge"><span class="badge__dot"></span> 61%</div>
+            </div>
+            <p>Mix cinéma d’auteur + pop mainstream. Aime débattre, cherche un opposé.</p>
+            <div class="badges">
+              <span class="badge badge--letterboxd"><span class="badge__dot"></span>Letterboxd</span>
+            </div>
+            <div class="kpi">
+              <span class="label">Compatibilité</span>
+              <div class="kpi__bar"><div class="kpi__fill" style="--p:61%"></div></div>
+            </div>
+            <div class="list--inline">
+              <button class="btn">Envoyer un message</button>
+              <button class="btn btn--subtle">Favori</button>
+            </div>
+          </article>
+
+          <!-- 9 autres cartes “placeholder” -->
+          <!-- Duplique les 3 ci-dessus en changeant nom/ville/compat & data-* -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Affinity — Profils.</p>
+    </div>
+  </footer>
+
+  <script>
+    // année & thème
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const root = document.documentElement;
+    document.getElementById('btnSimilar').addEventListener('click', ()=>root.setAttribute('data-match','similar'));
+    document.getElementById('btnOpposites').addEventListener('click', ()=>root.setAttribute('data-match','opposites'));
+
+    // petits filtres
+    const fVille = document.getElementById('fVille');
+    const fSource = document.getElementById('fSource');
+    const fMode = document.getElementById('fMode');
+    const fMin = document.getElementById('fMinCompat');
+    const cards = [...document.querySelectorAll('.profile')];
+
+    function applyFilters(){
+      const ville = fVille.value.toLowerCase();
+      const source = fSource.value.toLowerCase();
+      const mode = fMode.value.toLowerCase();
+      const min = Number(fMin.value || 0);
+
+      cards.forEach(card=>{
+        const okVille = !ville || card.dataset.ville.toLowerCase() === ville;
+        const okMode = !mode || card.dataset.mode === mode;
+        const okCompat = Number(card.dataset.compat) >= min;
+        const okSource = !source || (card.dataset.sources || '').split(',').includes(source);
+        card.style.display = (okVille && okMode && okCompat && okSource) ? '' : 'none';
+      });
+    }
+    [fVille,fSource,fMode,fMin].forEach(el=>el.addEventListener('input', applyFilters));
+  </script>
+</body>
+</html>
+
   <footer class="footer">
     <div class="container">
       <p>© <span id="year"></span> Affinity — Prototype étudiant.</p>
