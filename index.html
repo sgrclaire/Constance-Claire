@@ -1,26 +1,23 @@
 <!doctype html>
 <html lang="fr" data-match="similar">
 <head>
-  <meta charset="UTF-8">
-  <title>interMatch — Rencontre par intérêts (webdoc)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Affinity — Rencontres par intérêts</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Affinity : rencontres par goûts culturels et personnalité (Spotify, Babelio, Letterboxd).">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- 1. ENTÊTE + SOMMAIRE -->
   <header class="header">
     <div class="container nav">
-      <div class="brand">
-        <span class="brand__dot"></span>
-        <span>interMatch</span>
+      <div class="logo-title brand">
+        <img src="assets/logo-heart-puzzle.svg" alt="" aria-hidden="true">
+        <span>Affinity</span>
       </div>
-      <nav aria-label="Sommaire">
+      <nav class="main-nav" aria-label="Navigation">
         <div class="list--inline">
-          <a href="#intro">Intro</a>
-          <a href="#projet">Le projet</a>
-          <a href="#glossaire">Glossaire</a>
-          <a href="#biblio">Bibliographie</a>
+          <a href="webdoc.html">Web documentaire</a>
+          <a href="mentions.html">Mentions & Licence</a>
         </div>
       </nav>
       <div class="list--inline">
@@ -30,99 +27,53 @@
     </div>
   </header>
 
-  <main class="container" style="padding:2.5rem 0 3rem;">
-
-    <!-- 2. ARTICLE COURT -->
-    <article>
-
-      <!-- intro -->
-      <section id="intro" class="stack-2" style="margin-bottom:2.5rem;">
-        <h1>« interMatch » : rencontres par goûts culturels</h1>
-        <p class="lead">
-          Web documentaire réalisé dans le cadre du cours « Document numérique ». Objectif : montrer qu’on peut faire du matching
-          à partir de Spotify, Babelio, Letterboxd et d’un petit test de personnalité (mode clair = ressemblant, mode sombre = opposé).
-        </p>
-      </section>
-
-      <!-- partie 1 -->
-      <section id="projet" class="stack-2" style="margin-bottom:2.5rem;">
-        <h2>1. Présentation rapide du projet</h2>
-        <p>
-          L’idée est de proposer un site de rencontre qui ne se base pas uniquement sur la photo, mais sur les activités culturelles
-          réelles des utilisateurs. On part de leurs playlists Spotify, de leurs lectures Babelio et de leurs films vus sur Letterboxd,
-          puis on ajoute une couche de personnalité pour décider d’afficher plutôt des profils « ressemblants » ou au contraire « complémentaires ».
-        </p>
-        <p>
-          Le document que tu es en train de lire est la version HTML5 demandée par l’enseignant : il contient un sommaire, des sections distinctes,
-          un glossaire, et une bibliographie interactive.
-        </p>
-
-        <!-- visuel obligatoire minimal -->
-        <figure class="card">
-          <img src="assets/matching.png" alt="Schéma du matching par intérêts" style="max-width:100%;border-radius:8px;">
-          <figcaption>Figure 1 — Schéma très simplifié du fonctionnement d’interMatch.</figcaption>
-        </figure>
-
-        <!-- vidéo minimale à remplacer -->
-        <p>Vidéo de démonstration (à remplacer par votre vrai fichier) :</p>
-        <video controls width="100%" style="max-width:480px;">
-          <source src="assets/demo.mp4" type="video/mp4">
-          Votre navigateur ne lit pas la vidéo.
-        </video>
-      </section>
-
-    </article>
-
-    <!-- 3. GLOSSAIRE -->
-    <section id="glossaire" style="margin-bottom:2.5rem;">
-      <h2>2. Glossaire</h2>
-      <dl>
-        <dt><strong>API</strong></dt>
-        <dd>Interface permettant de récupérer les données d’une autre application (ici Spotify, Babelio, Letterboxd).</dd>
-
-        <dt><strong>Matching</strong></dt>
-        <dd>Action de rapprocher deux profils selon des critères (goûts, personnalité).</dd>
-
-        <dt><strong>Web documentaire</strong></dt>
-        <dd>Page web structurée mêlant texte, médias et navigation interne.</dd>
-      </dl>
+  <main>
+    <!-- Hero très léger -->
+    <section class="hero">
+      <div class="container grid grid--2">
+        <div>
+          <h1>Rencontres par goûts & personnalité.</h1>
+          <p class="lead">
+            Connecte Spotify, Babelio, Letterboxd et choisis ton mode : « qui se ressemble s’assemble »
+            ou « les opposés s’attirent ».
+          </p>
+          <div class="list--inline" style="margin-top:1rem">
+            <a class="btn" href="webdoc.html#article">Voir le concept</a>
+            <a class="btn btn--ghost" href="webdoc.html#glossaire">Glossaire</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Sources connectées</h3>
+          <div class="chips">
+            <span class="chip">Spotify</span>
+            <span class="chip">Babelio</span>
+            <span class="chip">Letterboxd</span>
+            <span class="chip">Test de personnalité</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- 4. BIBLIO / SITO -->
-    <section id="biblio" style="margin-bottom:2.5rem;">
-      <h2>3. Sitographie & bibliographie</h2>
-      <ul>
-        <li><cite>Spotify for Developers. Documentation de l’API. Consulté en 2025.</cite></li>
-        <li><cite>Babelio. « Aide & flux de données ». Consulté en 2025.</cite></li>
-        <li><cite>Boyd, D. (2014). « It’s Complicated ». Yale University Press.</cite></li>
-      </ul>
-      <p class="muted">Ces références sont données au format texte simple pour être récupérées dans Zotero.</p>
+    <!-- VIDÉO centrée NB -->
+    <section class="hero--video" aria-label="Vidéo de présentation">
+      <video controls poster="assets/schema-matching.png">
+        <source src="assets/demo.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo HTML5.
+      </video>
     </section>
-
   </main>
 
-  <!-- FOOTER avec mentions + mailto -->
   <footer class="footer">
-    <div class="container stack-2">
-      <p><strong>Mentions légales :</strong> site pédagogique réalisé pour le cours « Document numérique » (Master CTM).</p>
-      <p><strong>Licence :</strong> CC BY-NC 4.0 (réutilisation non commerciale avec attribution).</p>
-      <p>
-        <a href="mailto:prenom.nom@etu.univ.fr?subject=Contact%20projet%20interMatch&body=Bonjour,%20je%20vous%20contacte%20au%20sujet%20du%20webdoc.">
-          Nous écrire
-        </a>
-      </p>
+    <div class="container">
+      <p>© <span id="year"></span> Affinity — Prototype étudiant.</p>
     </div>
   </footer>
 
-  <!-- JS pour le mode clair/sombre -->
   <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
     const root = document.documentElement;
-    document.getElementById('btnSimilar').addEventListener('click', () => {
-      root.setAttribute('data-match', 'similar');
-    });
-    document.getElementById('btnOpposites').addEventListener('click', () => {
-      root.setAttribute('data-match', 'opposites');
-    });
+    document.getElementById('btnSimilar').addEventListener('click', ()=>root.setAttribute('data-match','similar'));
+    document.getElementById('btnOpposites').addEventListener('click', ()=>root.setAttribute('data-match','opposites'));
   </script>
 </body>
 </html>
