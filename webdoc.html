@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr" data-match="similar">
+<head>
+  <meta charset="utf-8">
+  <title>Affinity — Web documentaire (Document numérique)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Web documentaire Affinity : rencontres par affinités culturelles et personnalité.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo-title brand">
+        <img src="assets/logo-heart-puzzle.svg" alt="" aria-hidden="true">
+        <span>Affinity — webdoc</span>
+      </div>
+      <!-- Sommaire (index de navigation) -->
+      <nav class="main-nav" aria-label="Sommaire de l’article">
+        <div class="list--inline">
+          <a href="#intro">Introduction</a>
+          <a href="#article">Article</a>
+          <a href="#glossaire">Glossaire</a>
+          <a href="#biblio">Bibliographie</a>
+        </div>
+      </nav>
+      <div class="list--inline">
+        <button class="btn btn--ghost" id="btnSimilar">Ressemblance</button>
+        <button class="btn" id="btnOpposites">Opposés</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding:2.2rem 0 3rem;">
+    <section id="intro" class="stack-2" style="margin-bottom:2rem;">
+      <h1>« Affinity » — rencontre par affinités culturelles</h1>
+      <p class="lead">Web documentaire réalisé dans le cadre du cours « Document numérique » (Master CTM). Nous montrons comment des données issues de Spotify, Babelio, Letterboxd et un test de personnalité orientent la mise en relation.</p>
+      <p>Extrait de consigne : <q>le document doit être décomposé en parties et comporter un glossaire</q>. La présente page respecte ces exigences.</p>
+    </section>
+
+    <!-- ARTICLE EN PLUSIEURS PARTIES -->
+    <article id="article" aria-labelledby="titre-article">
+      <h2 id="titre-article">Article</h2>
+
+      <section id="partie-1">
+        <h3>1. Contexte et objectif</h3>
+        <p>De nombreuses plateformes priorisent la géolocalisation et l’apparence. Affinity explore une autre entrée : les goûts culturels et le rapport à la similarité ou à l’opposition dans la relation.</p>
+      </section>
+
+      <section id="partie-2">
+        <h3>2. Dispositif éditorial & technique</h3>
+        <p>Le site expose deux modes : <em>Ressemblance</em> (thème clair) et <em>Opposés</em> (thème sombre). Le mode est porté par l’attribut <code>data-match</code> au niveau de <code>&lt;html&gt;</code>, afin de rester sémantique et accessible.</p>
+
+        <!-- Visuel documenté & légendé -->
+        <figure class="card">
+          <img src="assets/schema-matching.png" alt="Schéma simplifié du matching Affinity" style="max-width:100%;border-radius:10px;">
+          <figcaption>Figure 1 — Schéma du rapprochement à partir des préférences culturelles (source : équipe projet).</figcaption>
+        </figure>
+
+        <!-- Vidéo ou audio -->
+        <p>Présentation rapide (vidéo intégrée) :</p>
+        <video controls width="100%" style="max-width:640px; border:1px solid var(--outline); border-radius:10px;">
+          <source src="assets/demo.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+      </section>
+
+      <section id="partie-3">
+        <h3>3. Données, éthique et ré-exploitation</h3>
+        <p>Les données externes doivent être collectées avec consentement explicite, finalité claire, durée de conservation limitée et respect des conditions d’utilisation des API. Les contenus tiers sont crédités et, lorsque possible, sous licence Creative Commons.</p>
+      </section>
+    </article>
+
+    <!-- GLOSSAIRE -->
+    <section id="glossaire" style="margin-top:2rem;">
+      <h2>Glossaire</h2>
+      <dl>
+        <dt id="g-api">API</dt>
+        <dd>Interface de Programmation Applicative : permet de récupérer des données depuis des services (Spotify, Babelio, Letterboxd).</dd>
+
+        <dt id="g-matching">Matching</dt>
+        <dd>Procédure de rapprochement entre profils selon des critères (goûts, personnalité, complémentarité).</dd>
+
+        <dt id="g-webdoc">Web documentaire</dt>
+        <dd>Article HTML5 enrichi, structuré en parties, mêlant texte, médias et navigation.</dd>
+      </dl>
+    </section>
+
+    <!-- BIBLIOGRAPHIE / SITOGRAPHIE INTERACTIVE (Zotero-compatible via COinS) -->
+    <section id="biblio" style="margin-top:2rem;">
+      <h2>Bibliographie & sitographie</h2>
+      <ul class="biblio">
+        <li>
+          <cite>Spotify for Developers — Web API</cite> —
+          <a href="https://developer.spotify.com/documentation/web-api" target="_blank" rel="noopener">Consulter</a>
+          <span class="Z3988" title="ctx_ver=Z39.88-2004&rft.genre=unknown&rft.title=Spotify%20Web%20API&rft_id=https://developer.spotify.com/documentation/web-api"></span>
+        </li>
+        <li>
+          <cite>Babelio — Aide & données</cite> —
+          <a href="https://www.babelio.com" target="_blank" rel="noopener">Consulter</a>
+          <span class="Z3988" title="ctx_ver=Z39.88-2004&rft.genre=unknown&rft.title=Babelio&rft_id=https://www.babelio.com"></span>
+        </li>
+        <li>
+          <cite>Boyd, D. (2014). <span lang="en">It’s Complicated</span>. Yale University Press.</cite>
+          <span class="Z3988" title="ctx_ver=Z39.88-2004&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=book&rft.btitle=It%27s%20Complicated&rft.aulast=Boyd&rft.au=danah%20boyd&rft.date=2014&rft.pub=Yale%20University%20Press"></span>
+        </li>
+        <li>
+          <cite>Letterboxd API (documentation communautaire)</cite> —
+          <a href="https://letterboxd.com/about/api/" target="_blank" rel="noopener">Consulter</a>
+          <span class="Z3988" title="ctx_ver=Z39.88-2004&rft.title=Letterboxd%20API&rft_id=https://letterboxd.com/about/api/"></span>
+        </li>
+      </ul>
+      <p class="muted">Les balises COinS (<code>.Z3988</code>) rendent ces références capturables par Zotero.</p>
+    </section>
+  </main>
+
+  <!-- PIED DE PAGE : mentions + licence + mailto prérempli -->
+  <footer class="footer">
+    <div class="container stack-2">
+      <p><strong>Mentions légales :</strong> site pédagogique réalisé pour le cours « Document numérique » (Master CTM). auteurs : à compléter.</p>
+      <p><strong>Licence :</strong> CC BY-NC 4.0 (réutilisation non commerciale avec attribution).</p>
+      <p>
+        <a href="mailto:prenom.nom@etu.univ.fr?subject=Projet%20Affinity%20—%20Document%20num%C3%A9rique&body=Bonjour,%20je%20vous%20contacte%20%C3%A0%20propos%20du%20webdoc%20Affinity.">
+          Nous écrire
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    document.getElementById('btnSimilar').addEventListener('click', ()=>root.setAttribute('data-match','similar'));
+    document.getElementById('btnOpposites').addEventListener('click', ()=>root.setAttribute('data-match','opposites'));
+  </script>
+</body>
+</html>
