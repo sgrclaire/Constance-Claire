@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr" data-match="similar">
+<head>
+  <meta charset="utf-8">
+  <title>Affinity — Mentions légales & Licence</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo-title brand">
+        <img src="assets/logo-heart-puzzle.svg" alt="" aria-hidden="true">
+        <span>Affinity</span>
+      </div>
+      <nav class="main-nav" aria-label="Navigation">
+        <div class="list--inline">
+          <a href="index.html">Accueil</a>
+          <a href="webdoc.html">Webdoc</a>
+        </div>
+      </nav>
+      <div class="list--inline">
+        <button class="btn btn--ghost" id="btnSimilar">Ressemblance</button>
+        <button class="btn" id="btnOpposites">Opposés</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding:2rem 0 3rem;">
+    <article class="stack-3">
+      <h1>Mentions légales</h1>
+      <section>
+        <h2>Éditeur</h2>
+        <p>Projet étudiant — Master CTM. Auteurs : à compléter. Contact : <a href="mailto:prenom.nom@etu.univ.fr?subject=Contact%20Affinity&body=Bonjour,%20je%20vous%20%C3%A9cris%20%C3%A0%20propos%20d’Affinity.">email</a>.</p>
+      </section>
+      <section>
+        <h2>Hébergement</h2>
+        <p>GitHub Pages (archive et/ou site en ligne selon la consigne).</p>
+      </section>
+      <section>
+        <h2>Licence de ré-exploitation</h2>
+        <p>Contenus texte : <strong>CC BY-NC 4.0</strong>. Visuels/vidéos : préciser licence et crédit pour chaque fichier.</p>
+      </section>
+      <section>
+        <h2>Données personnelles</h2>
+        <p>Prototype pédagogique : aucune collecte réelle sans consentement. En production, prévoir mentions RGPD (finalité, durée, droits).</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Affinity.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const root = document.documentElement;
+    document.getElementById('btnSimilar').addEventListener('click', ()=>root.setAttribute('data-match','similar'));
+    document.getElementById('btnOpposites').addEventListener('click', ()=>root.setAttribute('data-match','opposites'));
+  </script>
+</body>
+</html>
