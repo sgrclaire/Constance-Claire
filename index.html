@@ -68,7 +68,139 @@
       <p>© <span id="year"></span> Affinity — Prototype étudiant.</p>
     </div>
   </footer>
+<!doctype html>
+<html lang="fr" data-match="similar">
+<head>
+  <meta charset="utf-8">
+  <title>Affinity — Test de personnalité</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Test Affinity : ressemblance ou opposés ?">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo-title brand">
+        <img src="assets/logo-heart-puzzle.svg" alt="" aria-hidden="true"><span>Affinity</span>
+      </div>
+      <nav class="main-nav" aria-label="Navigation">
+        <div class="list--inline">
+          <a href="index.html">Accueil</a>
+          <a href="webdoc.html">Webdoc</a>
+          <a href="mentions.html">Mentions</a>
+        </div>
+      </nav>
+      <div class="list--inline">
+        <button class="btn btn--ghost" id="btnSimilar">Ressemblance</button>
+        <button class="btn" id="btnOpposites">Opposés</button>
+      </div>
+    </div>
+  </header>
 
+  <main class="container" style="padding:2rem 0 3rem;">
+    <article class="stack-3">
+      <h1>Test de personnalité Affinity</h1>
+      <p class="lead">7 questions rapides pour orienter ton mode : « qui se ressemble s’assemble » (clair) ou « les opposés s’attirent » (sombre).</p>
+
+      <form class="quiz" id="affinityQuiz">
+        <div class="progress"><div class="progress__fill" id="quizProgress" style="--p:0%"></div></div>
+
+        <div class="quiz__question">Sur Spotify, tu préfères :</div>
+        <div class="quiz__options">
+          <label class="option"><input type="radio" name="q1" value="similar" required> <span>rester dans des genres proches</span></label>
+          <label class="option"><input type="radio" name="q1" value="opposites"> <span>changer totalement d’univers</span></label>
+        </div>
+
+        <div class="quiz__question">Au cinéma, tu choisis :</div>
+        <div class="quiz__options">
+          <label class="option"><input type="radio" name="q2" value="similar" required> <span>ce que tu sais que tu vas aimer</span></label>
+          <label class="option"><input type="radio" name="q2" value="opposites"> <span>une recommandation surprenante</span></label>
+        </div>
+
+        <div class="quiz__question">En couple, tu privilégies :</div>
+        <div class="quiz__options">
+          <label class="option"><input type="radio" name="q3" value="similar" required> <span>des références culturelles communes</span></label>
+          <label class="option"><input type="radio" name="q3" value="opposites"> <span>la complémentarité des goûts</span></label>
+        </div>
+
+        <div class="quiz__question">Tes lectures :</div>
+        <div class="quiz__options">
+          <label class="option"><input type="radio" name="q4" value="similar" required> <span>restent dans 2–3 genres favoris</span></label>
+          <label class="option"><input type="radio" name="q4" value="opposites"> <span>partent dans tous les sens</span></label>
+        </div>
+
+        <div class="quiz__question">Discussion idéale :</div>
+        <div class="quiz__options">
+          <label class="option"><input type="radio" name="q5" value="similar" required> <span>bondir sur des références communes</span></label>
+          <label class="option"><input type="radio" name="q5" value="opposites"> <span>découvrir un monde inconnu</span></label>
+        </div>
+
+        <div class="quiz__question">Sorties :</div>
+        <div class="quiz__options">
+          <label class="option"><input type="radio" name="q6" value="similar" required> <span>tes lieux sûrs, tes ambiances</span></label>
+          <label class="option"><input type="radio" name="q6" value="opposites"> <span>nouvelles ambiances souvent</span></label>
+        </div>
+
+        <div class="quiz__question">Ton “perfect match” :</div>
+        <div class="quiz__options">
+          <label class="option"><input type="radio" name="q7" value="similar" required> <span>ton reflet culture/valeurs</span></label>
+          <label class="option"><input type="radio" name="q7" value="opposites"> <span>ton contrepoint stimulant</span></label>
+        </div>
+
+        <button class="btn" type="submit">Voir mon mode</button>
+      </form>
+
+      <div id="quizResult" class="card hidden">
+        <h3>Résultat</h3>
+        <p id="quizText"></p>
+        <div class="list--inline">
+          <a class="btn" href="index.html">Retour à l’accueil</a>
+          <a class="btn btn--ghost" href="webdoc.html#article">Voir le concept</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Affinity — Test.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const root = document.documentElement;
+    document.getElementById('btnSimilar').addEventListener('click',()=>root.setAttribute('data-match','similar'));
+    document.getElementById('btnOpposites').addEventListener('click',()=>root.setAttribute('data-match','opposites'));
+
+    const form = document.getElementById('affinityQuiz');
+    const progress = document.getElementById('quizProgress');
+    const box = document.getElementById('quizResult');
+    const text = document.getElementById('quizText');
+
+    form.addEventListener('change', () => {
+      const total = 7;
+      const checked = form.querySelectorAll('input[type="radio"]:checked').length;
+      progress.style.setProperty('--p', Math.round(100*checked/total)+'%');
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const answers = [...form.querySelectorAll('input[type="radio"]:checked')].map(i=>i.value);
+      const opposites = answers.filter(v=>v==='opposites').length;
+      const similar = answers.length - opposites;
+      const mode = opposites > similar ? 'opposites' : 'similar';
+      root.setAttribute('data-match', mode);
+      text.textContent = mode === 'opposites'
+        ? "Ton mood : Opposés s’attirent. Thème sombre activé."
+        : "Ton mood : Qui se ressemble s’assemble. Thème clair activé.";
+      box.classList.remove('hidden');
+      progress.style.setProperty('--p','100%');
+      window.scrollTo({top:box.offsetTop-80, behavior:'smooth'});
+    });
+  </script>
+</body>
+</html>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     const root = document.documentElement;
