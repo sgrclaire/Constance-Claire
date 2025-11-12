@@ -1,0 +1,16 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Affinity logo">
+  <defs>
+    <style>
+      .s{fill:#000}
+      @media (prefers-color-scheme: dark){ .s{fill:#fff} }
+    </style>
+  </defs>
+  <!-- cœur stylisé divisé en 2 pièces "puzzle" -->
+  <path class="s" d="M32 57s-3.6-3.2-13.6-12C9.1 36.4 6 30.6 6 24.7 6 18 11 13 17.6 13c5.1 0 8.6 2.9 10.4 6.4 1.8-3.5 5.3-6.4 10.4-6.4C45 13 50 18 50 24.7c0 5.9-3.1 11.7-12.4 20.3C35.6 53.8 32 57 32 57z"/>
+  <!-- ligne puzzle -->
+  <path class="s" d="M32 17v40" opacity=".12"/>
+  <!-- encoche puzzle gauche -->
+  <circle class="s" cx="24.5" cy="31" r="3.2"/>
+  <!-- encoche puzzle droite -->
+  <circle class="s" cx="39.5" cy="38" r="3.2"/>
+</svg>
