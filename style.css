@@ -380,3 +380,26 @@ a:hover { opacity: .75; background-size: 0 1px; }
   border-top: 1px solid var(--outline);
   padding: 2rem 0; color: var(--muted); font-size: .95rem;
 }
+/* === Affinity: petits ajouts === */
+.brand svg { height: 24px; width: 24px; display:inline-block; }
+.hero--video { display:grid; place-items:center; padding:4rem 0; }
+.hero--video video { width:min(900px, 92vw); border:1px solid var(--outline); border-radius:12px; filter: grayscale(100%); }
+.logo-title { display:flex; align-items:center; gap:.6rem; font-family:var(--font-serif); font-weight:700; }
+.main-nav .list--inline a { padding:.3rem .2rem; }
+
+/* Guillemets françaises pour <q> */
+q { quotes: "« " " »" "‹ " " ›"; }
+q::before { content: open-quote; }
+q::after { content: close-quote; }
+
+/* Article lisible */
+article { display:grid; gap:1.25rem; }
+article section { scroll-margin-top: 6rem; }
+
+/* Glossaire */
+dl { display:grid; gap:.6rem; }
+dt { font-weight:700; }
+dd { margin:0 0 .6rem 0; color:var(--muted); }
+
+/* Bibliographie */
+.biblio li { margin:.4rem 0; }
